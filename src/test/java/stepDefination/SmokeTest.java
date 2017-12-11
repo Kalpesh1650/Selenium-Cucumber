@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
+import com.cucumber.listener.Reporter;
+
 import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -42,7 +44,10 @@ public class SmokeTest {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		
 		driver.navigate().to(siteURL);
-		
+		Reporter.addStepLog("Step Log message goes here");
+		Reporter.setSystemInfo("user", System.getProperty("user.name"));
+        Reporter.setSystemInfo("os", "Mac OSX");
+        Reporter.setTestRunnerOutput("Sample test runner output message");
 	    // Write code here that turns the phrase above into concrete actions
 	   // throw new PendingException();
 	}
